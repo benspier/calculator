@@ -14,22 +14,18 @@ keys.addEventListener('click', e => {
 
   //calculate function
   const calculate = (n1, operator, n2) => {
-    if (operator === 'add') return parseFloat(n1) + parseFloat(n2);
-    if (operator === 'subtract')
-      return parseFloat(n1) - parseFloat(n2);
-    if (operator === 'multiply')
-      return parseFloat(n1) * parseFloat(n2);
-    if (operator === 'divide')
-      return parseFloat(n1) / parseFloat(n2);
-
-    console.log();
+    const firstNum = parseFloat(n1);
+    const secondNum = parseFloat(n2);
+    if (operator === 'add') return firstNum + secondNum;
+    if (operator === 'subtract') return firstNum - secondNum;
+    if (operator === 'multiply') return firstNum * secondNum;
+    if (operator === 'divide') return firstNum / secondNum;
   };
 
-  //if button hit...
+  //if key hit...
   if (e.target.matches('button')) {
     Array.from(key.parentNode.children).forEach(k =>
       k.classList.remove('is-depressed')
-      debug;
     );
 
     //...is a number
