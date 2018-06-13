@@ -9,7 +9,6 @@ const calculate = (n1, operator, n2) => {
   if (operator === 'subtract') return firstNum - secondNum;
   if (operator === 'multiply') return firstNum * secondNum;
   if (operator === 'divide') return firstNum / secondNum;
-  console.log();
 };
 
 const getKeyType = key => {
@@ -26,15 +25,6 @@ const getKeyType = key => {
 };
 
 const createResultString = (key, displayedNum, state) => {
-  // Variables required are:
-  // 1. keyContent
-  // 2. displayedNum
-  // 3. previousKeyType
-  // 4. action
-  // 5. state.firstValue
-  // 6. state.operator
-  // 7. state.modValue
-
   const keyContent = key.textContent;
   const { firstValue, modValue, operator, previousKeyType } = state;
   const keyType = getKeyType(key);
@@ -58,9 +48,6 @@ const createResultString = (key, displayedNum, state) => {
   }
 
   if (keyType === 'operator') {
-    const firstValue = calculator.dataset.firstValue;
-    const operator = calculator.dataset.operator;
-
     return firstValue &&
       operator &&
       previousKeyType !== 'operator' &&
@@ -72,10 +59,6 @@ const createResultString = (key, displayedNum, state) => {
   if (keyType === 'clear') return 0;
 
   if (keyType === 'calculate') {
-    const firstValue = calculator.dataset.firstValue;
-    const operator = calculator.dataset.operator;
-    const modValue = calculator.dataset.modValue;
-
     return firstValue
       ? previousKeyType === 'calculate'
         ? calculate(displayedNum, operator, modValue)
@@ -90,13 +73,6 @@ const updateCalculatorState = (
   calculatedValue,
   displayedNum
 ) => {
-  // Variables needed:
-  // 1. key
-  // 2. calculator
-  // 3. calculatedValue
-  // 4. displayedNum
-  // 5. modValue
-
   const keyType = getKeyType(key);
   const {
     firstValue,
@@ -104,12 +80,15 @@ const updateCalculatorState = (
     modValue,
     previousKeyType,
   } = calculator.dataset;
+
   calculator.dataset.previousKeyType = keyType;
 
   if (keyType === 'number') {
   }
+
   if (keyType === 'decimal') {
   }
+
   if (keyType === 'operator') {
     calculator.dataset.operator = key.dataset.action;
     calculator.dataset.firstValue =
@@ -120,6 +99,7 @@ const updateCalculatorState = (
         ? calculatedValue
         : displayedNum;
   }
+
   if (keyType === 'clear') {
     if (key.textContent === 'AC') {
       calculator.dataset.firstValue = '';
@@ -129,6 +109,7 @@ const updateCalculatorState = (
     }
     calculator.dataset.previousKeyType = 'clear';
   }
+
   if (keyType === 'calculate') {
     calculator.dataset.modValue =
       firstValue && previousKeyType === 'calculate'
