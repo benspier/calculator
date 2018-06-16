@@ -1,28 +1,8 @@
 import './main.css';
-import { debug } from 'util';
+import { calculate } from '../src/components/calculate';
+import { getKeyType } from '../src/components/getKeyType';
 
 // Function declarations
-const calculate = (n1, operator, n2) => {
-  const firstNum = parseFloat(n1);
-  const secondNum = parseFloat(n2);
-  if (operator === 'add') return firstNum + secondNum;
-  if (operator === 'subtract') return firstNum - secondNum;
-  if (operator === 'multiply') return firstNum * secondNum;
-  if (operator === 'divide') return firstNum / secondNum;
-};
-
-const getKeyType = key => {
-  const { action } = key.dataset;
-  if (!action) return 'number';
-  if (
-    action === 'add' ||
-    action === 'subtract' ||
-    action === 'multiply' ||
-    action === 'divide'
-  )
-    return 'operator';
-  return action;
-};
 
 const createResultString = (key, displayedNum, state) => {
   const keyContent = key.textContent;
