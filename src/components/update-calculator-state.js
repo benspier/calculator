@@ -1,3 +1,5 @@
+import { getKeyType } from './get-key-type';
+
 exports.updateCalculatorState = (
   key,
   calculator,
@@ -26,10 +28,10 @@ exports.updateCalculatorState = (
   }
 
   if (keyType === 'clear' && key.textContent === 'AC') {
-      calculator.dataset.firstValue = '';
-      calculator.dataset.modValue = '';
-      calculator.dataset.operator = '';
-      calculator.dataset.previousKeyType = '';
+    calculator.dataset.firstValue = '';
+    calculator.dataset.modValue = '';
+    calculator.dataset.operator = '';
+    calculator.dataset.previousKeyType = '';
   }
 
   if (keyType === 'calculate') {

@@ -1,3 +1,5 @@
+import { getKeyType } from './get-key-type';
+
 exports.updateVisualState = (key, calculator) => {
   const keyType = getKeyType(key);
   Array.from(key.parentNode.children).forEach(k =>

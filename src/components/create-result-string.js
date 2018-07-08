@@ -1,3 +1,6 @@
+import { getKeyType } from './get-key-type';
+import { calculate } from './calculate';
+
 exports.createResultString = (key, displayedNum, state) => {
   const keyContent = key.textContent;
   const { firstValue, modValue, operator, previousKeyType } = state;
